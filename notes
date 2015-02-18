@@ -1,0 +1,211 @@
+- use grep to print lines that contain / don't contain things
+	grep -v inverts match
+	grep -i ignores case
+	Lecture 6
+
+-regex => generally, use single quotes => won't expand
+	. => matches any single character
+	[:alnum:] - alphanumeric
+	[:alpha:]
+	[:digit:]
+	[:punct:]
+	[:lower:]
+	[:upper:]
+	[:space:]
+	[^______] => not character, negate everything in []
+	* - matches 0 or more occurences
+	\? - matches 0 or 1 occurence
+	\+ - mathces 1 or more occurences
+	^[] - matches beginning of line
+	[]$ - mathces end of line
+	\{n\} - preceding item is repeated exactly n times
+	\{n,\} - preceding item is repeated at least n times
+	\{i,j\} matches between i and j ocurrences
+	\(expr\) - matches expr
+	c1\|c2 - matches c1 or c2
+	\< - matches the beginning of a word
+	\> - matches the end of a word
+	grep -E or egrep => extended regular expressions
+	Lecture 6
+
+-cut => extracts sections of e/ line of input
+	range of:
+		bytes, chars, delimiter, fields, supression
+	lecture 7
+
+-paste => concat's files side-by-side
+	lecture 7
+
+-split => splits file into pieces
+	num lines in each, num bytes in each, prefix of file prod
+	lecture 7
+
+-join => joins lines that contain the same key between two different files
+	lecture 7
+
+-bc => basic calc
+	lecture 7
+
+-sed => stream editor
+	sed 's/<regexp>/<text>' file => go line by line, replace regexp w/ text
+	/g at end => allow more than 1 replacement per line
+	/d at end => deletes all lines that contain regexp
+	place expression inside () tells editor to save whatever string matches the expression
+		must escape => \(, \)
+		access saved strings by \1, \2, etc
+	specify line numbers at beginning => sed '1,20s/.....' checks lines 1 to 20
+	remove regex => 's/regexp/ /g' file
+	to script => #! /usr/bin/sed -f
+	trim whitespace => s/^ *//
+	lecture 7
+
+-vim => READ OVER THIS!!
+	lecture 8
+
+-screen => terminal emulation
+	screen -a => include all capabilities
+	screen -r [pid.tty.host] - resumes a detached screen session
+	screen -x [pid.tty.host] - attach to a non-detached screen session
+	screen -ls or screen -list - list screen sessions and statuses
+	must type Ctrl-a, then these commands below
+		c - creates a new shell in window and switches to it
+		1-9 - switches to windows 1-9, in order of creation
+		S - splits terminal into multiple panes
+			e/ split is blank => c to create new, num for existing
+		tab - changes the input focus to the next plane
+	lecture 8
+
+-tmux => lecture 8
+
+-scripting
+	$(cmd) - executes cmd
+	$((expression)) - expands arithmetic expression
+	sngl quote - preserves literal value of each character
+	double quote - preserves literal value of each character w/ exception of $ ' \ !
+	back quotes - executes command => like $()
+	exit commands => 0 success, stored in $?
+	start with #! /bin/bash
+	passing arguments
+		$1, $2, ... $11 - the values of first,... arguments
+		$0 - name of the script
+		$# - number of args
+		$* - expands to single string of all args
+		$@ - expands to all args => almost always want this one
+		$$ - current process id
+	if
+		if cmd1
+		then
+			cmd2
+		elif cmd3
+		then
+			cmd4
+		else
+			cmd5
+		fi
+	test expressions
+		-eq, -ne, -lt, -le, -gt, -ge => n1 -eq n2
+		either test EXPRESSION or [ EXPRESSION ]
+		-a : and between expressions
+		-o : or
+		! testexp1 => not
+	string comp
+		s1 == s2
+		s1 != s2
+		s1 - makes sure not null string
+		MUST HAVE SPACES
+	path testing
+		-e path - if exists
+		-f path - if file
+		-d path - if directory
+		-r path - if you have permission to read
+		-w path - if you have permission to write
+		-x path - if you have permission to execute
+	bash -x ___ => shows line by line execution
+	lecture 9
+
+-scripting
+	let
+		let VAR2=$Var1+15 => expands right side, then assigns
+		let VAR2++
+		no spaces anywhere
+		i.e. => let "i=i + 1"     i=$(($i + 1))
+	while
+		while cmd
+		do
+			cmd1
+		done
+	until
+		until cmd
+		do
+			cmd1
+		done
+	for
+		for var in string1 string2 ...
+		do
+			cmd1
+		done
+		for f in "$@"
+		for i in {1..10}
+		for i in $(seq 1 2 20)
+		for (( c=1; c<=5; c++))
+		for (( ; ; )) - infinite loop
+	break - exit for, while, and until loops early
+	continue - skip to next iteration of for, while, or until loop
+	read varname
+		asks user for input
+		stores in $REPLY, or varname if specified
+		read -p => allows you to print some text
+			i.e. read -p "Password? " password
+		can be used to go line by line through file
+		i.e. cat /etc/passwd | while read LINE ; do echo $LINE done
+	case
+		case expression in
+			pattern1 )
+				statements;;
+			pattern2 )
+				statements;;
+			*) - kind of like a default
+				statements;;
+		esac
+		patterns expanded using shell expansion => separated by pipe
+	lecture 10
+
+-awk/gawk
+	for text-based data
+	pattern1 { commands } - patterns regexps
+	line by line, checking each pattern, if found, performs command
+	convenient numerical processing, variables and control flow, access fields within lines, flexible printing, built-in arithmetic and string functions
+	no defined action => print
+	$0 refers to whole line
+	allows blocks of code to be executed only once, at the beginning or end
+		gawk 'BEGIN {print "Starting"} END {print "Ending"}'
+	variables initialized to 0. strings to "" => no initialization required
+	automatically separates each input line into fields
+		$0, whole line
+		$1, $2, .., $(10) => field numbers
+		default Field Separator (FS) is white space
+	NF - # of fileds in current line
+	NR - # of lines read so far
+	FILENAME - the name of the input file
+	set field separator
+		gawk -F also allows to set field separator
+		gawk 'BEGIN {FS = ":"} ....
+	toupper(), tolower()
+	~ - matching command, !~ - not matching
+	exp(x) - exponential of x
+	rand() - rand # between 0 and 1
+	length(x), log(x), sin(x), int(x)
+	very similar to c
+	handles variable conversion automatically
+	substr(string, beg[, len])
+	array - key,value
+	if (someValue in theArray) {
+	for (i in theArray) {
+	printf
+		%d, $s, \t, \n
+	split
+		n = split(string, array, separator)
+			splits fields of string separated and places in array
+			n is number of fields
+			default sep is white space
+	if((i,j) in array) => if key i SUBSEP j exists
