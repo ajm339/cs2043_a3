@@ -1,0 +1,10 @@
+page
+www.nytimes.com/yr/mo/day/sports/football/patriots-win-super-bowl-xlix-defeating-seahawks.html
+targetedPage
+--
+The
+seahawks
+continued
+page
+www.nytimes.com/yr/mo/day/sports/football/patriots-win-super-bowl-xlix-defeating-seahawks.html
+targetedPage
