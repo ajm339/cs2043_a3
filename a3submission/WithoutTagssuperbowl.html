@@ -1,0 +1,803 @@
+{"adconfig":{"ledeMediaSize":"large","adxKeywords":["Patriots 28, Seahawks 24","article-long"]}}
+            []    
+[
+    {
+        "testId": "0002",
+        "testName": "promotron",
+        "throttle": 1.0,
+        "allocation": 0.5,
+        "variants": 1
+    },
+    {
+        "testId": "0012",
+        "testName": "tallWatchingModule",
+        "throttle": 1.0,
+        "allocation": 0.9,
+        "variants": 1,
+        "applications": ["homepage"]
+    },
+    {
+        "testId": "0014",
+        "testName": "redDot",
+        "throttle": 0.02,
+        "allocation": 0.5,
+        "variants": 1,
+        "applications": ["article"]
+    }
+]
+var require = {
+    baseUrl: 'http://a1.nyt.com/assets/',
+    waitSeconds: 20,
+    paths: {
+        'foundation': 'article/20150204-175116/js/foundation',
+        'shared': 'article/20150204-175116/js/shared',
+        'article': 'article/20150204-175116/js/article',
+        'videoFactory': 'http://static01.nyt.com/js2/build/video/2.0/videofactoryrequire',
+        'videoPlaylist': 'http://static01.nyt.com/js2/build/video/players/extended/2.0/appRequire',
+        'auth/mtr': 'http://static01.nyt.com/js/mtr',
+        'auth/growl': 'http://static01.nyt.com/js/auth/growl/default',
+        'vhs': 'http://static01.nyt.com/video/vhs/build/vhs-2.x.min'
+    }
+};
+require.map = { '*': { 'foundation/main': 'foundation/legacy_main' } };
+window.magnum.processFlags(["newNotifications","notificationPopups","followButton","articlesImageFallback","limitFabrikSave","scrollBeacon"]);
+require(['foundation/main'], function () {
+    require(['auth/mtr', 'auth/growl']);
+});
+.dynotifyjs-corner {
+  position: fixed;
+  margin: 5px;
+  z-index: 1050;
+}
+.dynotifyjs-corner .dynotifyjs-wrapper,
+.dynotifyjs-corner .dynotifyjs-container {
+  position: relative;
+  display: block;
+  height: inherit;
+  width: inherit;
+  margin: 3px;
+}
+.dynotifyjs-wrapper {
+  z-index: 1;
+  position: absolute;
+  display: inline-block;
+  height: 0;
+  width: 0;
+}
+.dynotifyjs-container {
+  display: none;
+  z-index: 1;
+  position: absolute;
+  cursor: pointer;
+}
+[data-dynotify-text],[data-dynotify-html] {
+  position: relative;
+}
+.dynotifyjs-arrow {
+  position: absolute;
+  z-index: 2;
+  width: 0;
+  height: 0;
+}
+    .lt-ie9 .messenger.suggestions {
+        display: block !important;
+        height: 50px;
+    }
+    .lt-ie9 .messenger.suggestions .message-bed {
+        background-color: #f8e9d2;
+        border-bottom: 1px solid #ccc;
+    }
+    .lt-ie9 .messenger.suggestions .message-container {
+        padding: 11px 18px 11px 30px;
+    }
+    .lt-ie9 .messenger.suggestions .action-link {
+        font-family: "nyt-franklin", arial, helvetica, sans-serif;
+        font-size: 10px;
+        font-weight: bold;
+        color: #a81817;
+        text-transform: uppercase;
+    }
+    .lt-ie9 .messenger.suggestions .alert-icon {
+        background: url('http://i1.nyt.com/images/icons/icon-alert-12x12-a81817.png') no-repeat;
+        width: 12px;
+        height: 12px;
+        display: inline-block;
+        margin-top: -2px;
+        float: none;
+    }
+    .lt-ie9 .masthead,
+    .lt-ie9 .navigation,
+    .lt-ie9 .comments-panel {
+        margin-top: 50px !important;
+    }
+    .lt-ie9 .ribbon {
+        margin-top: 97px !important;
+    }
+.NYT5Style .masthead-tools #bar1-twopanel  {
+    display: inline;
+    vertical-align: top;
+}
+#bar1-twopanel {
+  border:none;
+  position: relative;
+}
+.bar1_hover {
+    opacity: 0;
+}
+.sub_small_hide{
+    display: none;
+}
+#bar1-twopanel > a {
+    -moz-box-sizing: border-box;
+    background-color: #6288A5;
+    border: 1px solid #4D7B9F;
+    border-radius: 3px;
+    color: #FFFFFF !important;
+    display: inline-block;
+    font-size: 1em;
+    font-weight: bold;
+    font-family: nyt-franklin,nyt-franklin-1,'Helvetica Neue',Arial,sans-serif;
+    padding: 7px 10px 6px;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+#bar1-twopanel > a:hover {
+    background-color: #326891;
+    border: 1px solid #265E8B;
+    text-decoration: none;
+}
+#hovercard {
+    width:451px;
+    display:none;
+    z-index: 2147483647;
+    background-color:#fff;
+    height:376px;
+    border:1px solid #ccc;
+    position:absolute;
+    left: 50%;
+    margin-left: -290px;
+    top: 30px;
+    -moz-box-shadow: 0 0 5px #888;
+    -webkit-box-shadow: 0 0 5px#888;
+    box-shadow: 0 0 5px #888;
+    white-space:normal;
+    text-align:left;
+}
+#hovercard:before {
+    content:url(http://graphics8.nytimes.com/marketing/bar1jsimages/arrowup.png);
+    position:absolute;
+    left: 227px;
+    top: -16px;
+    width: 125px;
+    height: 18px;
+    display:block;
+    z-index: 1;
+    text-align: center;
+}
+h2#bar1-title,
+.NYT5Style #masthead h2#bar1-title {
+  text-align: center;
+  font-family: nyt-franklin, nyt-franklin-1, "Helvetica Neue", arial, sans-serif;
+  font-style: normal;
+  margin: 15px 0 5px;
+  font-size: 24px !important;
+  color: #000;
+}
+h3.hover-title,
+.NYT5Style h3.hover-title {
+    font-size: 16px;
+    font-weight:700;
+    line-height: 20px;
+    font-family: 'nyt-franklin','Helvetica Neue',Arial,sans-serif;
+    color:#000;
+    width: 190px;
+    font-style: normal;
+}
+.split-dig {
+    width:224px;
+    border-right:1px solid #F1F1F1;
+    margin:0;
+    padding:0px;
+    min-height: 330px;
+    background:#fff url('http://graphics8.nytimes.com/adx/images/ADS/38/09/ad.380913/devices_tri_201401_v2.png') center 34px no-repeat;
+    float:left;
+    position: relative;
+}
+#hovercard h3 a,
+#hovercard p a {
+    color: #000 !important;
+    text-decoration: none !important;
+    display: block;
+}
+.split-dig-content {
+    padding:145px 0 0 17px;
+}
+.split-dig:hover {
+  background-color: #F2F6F9;
+}
+.split-ada {
+    width:225px;
+    margin:0;
+    padding: 0;
+    min-height:330px;
+    background:#fff url('http://graphics8.nytimes.com/adx/images/ADS/38/09/ad.380913/devices_paper_201401_v2.png') center 34px no-repeat;
+    float:right;
+    position: relative;
+}
+.split-ada-content {
+    padding:145px 0 0 15px;
+}
+.split-dig:hover,
+.split-ada:hover {
+  background-color:#F2F6F9;
+}
+.hover-subhead {
+    font-family: 'nyt-franklin', 'Helvetica Neue', Arial,sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 18px;
+    color: #333;
+    margin-top: 14px;
+    width: 185px;
+}
+.split-ada-content .hover-subhead {
+    width: 200px;
+}
+a.nyt-button-actions {
+    background: #F7F7F5;
+    color:#6E6E6C;
+    width:188px;
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    border-radius:3px;  
+    border:1px solid #ccc !important;
+    text-transform: uppercase;
+    font:11px "nyt-franklin","Helvetica Neue", Arial, sans-serif;
+    text-align: center;
+    padding:6px 0;
+    cursor: pointer;
+    display: block;
+    position: absolute;
+    bottom:15px;
+}
+a.nyt-button-actions:hover {
+    background:#3C6791; 
+    color:#fff;
+    text-decoration: none !important;
+}
+a.nyt-button-actions.highlightButton:link,
+a.nyt-button-actions.highlightButton:visited {
+        color:#fff  !important;
+        background:#3C6791; 
+        text-decoration: none !important;
+}
+.NYT5Style #hovercard {
+        top: 18px;
+}
+/* WEBKIT ONLY RULES */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  .NYT5Style #hovercard,
+  #hovercard {
+    top: 35px !important;
+  }
+    /*#masthead #hovercard {
+        margin-left: -359px !important;
+    }*/
+}
+/* EXCLUDING NYT4 INTERACTIVES */
+#interactiveABC #bar1-twopanel {
+   display: none;
+}
+campaign: 
+nyt2014_bar1_edu_college_propensity_486YR -- 259492, creative: 
+nyt2014_bar1_edu_college_2panel_486YR_48746_486YY -- 380913, page: 
+www.nytimes.com/yr/mo/day/sports/football/patriots-win-super-bowl-xlix-defeating-seahawks.html,
+ targetedPage: www.nytimes.com/yr/mo/day/sports/football, position: Bar1
+                                Home Page                                                            
+                                Home Page                                                            
+                                World                                                                    
+                                U.S.                                                                    
+                                Politics                                                                    
+                                New York                                                                    
+                                Business                                                                    
+                                Business                                                                    
+                                Opinion                                                                    
+                                Opinion                                                                    
+                                Technology                                                                    
+                                Science                                                                    
+                                Health                                                                    
+                                Sports                                                                    
+                                Sports                                                                    
+                                Arts                                                                    
+                                Arts                                                                    
+                                Fashion &amp; Style                                                                    
+                                Fashion &amp; Style                                                                    
+                                Food                                                                    
+                                Food                                                                    
+                                Home &amp; Garden                                                            
+                                Travel                                                            
+                                Magazine                                                            
+                                Real Estate                                                                    
+                                Obituaries                                                            
+                                Video                                                                    
+                                The Upshot                                                            
+                                More                                                                    
+    {"headline":"Patriots Make a Stand","content_kicker":"","section_name":"sports","subsection_name":"football","publication_date":1422853200,"id":100000003486134,"imageslideshow":{"slides":[{"data_id":100000003486157,"image_type":"photo","caption":{"full":"
+                                                            In
+ their last two Super Bowls, the Patriots had lost in improbable 
+fashion, last-minute defeats fueled by ridiculous passes and absurd 
+catches, and now came the In
+ a frantic finish, and after a dose of karmic payback, the Patriots 
+survived. It was New England that became a team for the ages, not 
+Seattle, winning its fourth “We’ve
+ had some great teams that haven’t won it and I think you’ve got to just
+ enjoy the moment,” Brady said. “We’ve been on the other end of this 
+twice now.”
+                            Related Coverage
+Butler’s
+ catch had the same nauseating effect on the Seahawks and their 
+supporters as David Tyree’s helmet catch here seven years ago or Mario 
+Manningham’s sideline grab three years ago did on the Patriots, who lost
+ those Super Bowls to the Giants by a total of 7 points.
+                                    Video by Justin Sablich                     on
+                                                                        February 2, 2015.
+                                    Photo by Matt York/Associated Press.
+It
+ spoiled the Seahawks’ repeat bid, denying them of dynasty status, and 
+returned one of the league’s most successful franchises to glory. And it
+ came on a play call whose merits will be debated in barrooms and 
+boardrooms in the Pacific Northwest for years to come.Instead
+ of handing the ball off a second straight play to Marshawn Lynch, their
+ bruising running back who had already scored a touchdown, the Seahawks 
+on second down elected to pass. Coach Pete Carroll accepted 
+responsibility, but in the chaos afterward there seemed confusion.When
+ asked whose decision it was, Wilson deflected the question. The 
+offensive coordinator, Darrell Bevell, said he was comfortable with the 
+choice but, considering the result, he would have liked to have called 
+something different.In
+ toppling Seattle, New England became the first champion to overcome a 
+10-point deficit in the fourth quarter, a development that was 
+remarkable and disorienting all at once. As many comebacks as Brady has 
+orchestrated over his sparkling career, this one has to rank among the 
+most special.Because
+ it came against the swaggering Seahawks, who boasted the N.F.L.’s best 
+defense and would tell anyone who asked as much. Because in its last 
+eight games, all victories, Seattle had outscored its opponents by 83-13
+ in the fourth quarter and overtime — and by 130-26 after halftime — in a
+ stretch encompassing its stunner two weeks ago in the N.F.C. 
+championship.Confronted
+ with daunting circumstances, a 24-14 deficit with 12 minutes 10 seconds
+ left, Brady led the Patriots to touchdowns on consecutive drives. The 
+second provided the margin of victory, with Brady completing all eight 
+passes, including a 3-yard toss to Julian Edelman, who had nine 
+receptions for a team-high 109 yards.
+“Considering
+ the fact that I almost had two heart attacks,” said Edelman, still 
+wearing his grass-stained jersey, “it was great.”
+                Patriots tight end Rob 
+Gronkowski scoring on a 22-yard pass from Tom Brady in the second 
+quarter, as New England took a 14-7 lead.
+            Chang W. Lee/The New York Times        
+So
+ it was, all across the Patriots’ empire Sunday night and, particularly,
+ in all corners of University of Phoenix Stadium. Rob Gronkowski cut 
+short an interview because he said he needed to go celebrate. Confetti 
+cascaded from above. In the interview area, Darrelle Revis was chatting 
+with two reporters from Japan, one of whom was wearing a pink cowboy 
+hat. One asked Revis about the victory party.“It’s
+ already begun,” Revis said. “But you want to come? You can come. But 
+you have to bring the hat.” Then the reporter let Revis put it on.
+Although
+ they were asked, and although they would not say, the Patriots said 
+they derived no additional satisfaction — not in their return to the 
+stadium where they were denied perfection seven years ago, not after 
+enduring scrutiny, their image stained, all because of footballs that 
+may or may not have been intentionally deflated.For
+ them, for Belichick and for Brady and for defenders everywhere of the 
+Patriot Way, validation is measured by Super Bowls, and now they have 
+another.Before
+ the playoffs started, Wilson and Brady sent emails to a mutual friend. 
+Each quarterback predicted this Super Bowl matchup, and their telepathy 
+made sense: finishing his third season, Wilson is hewing to the Brady 
+career arc: midround draft pick, immediate success as a starter, a title
+ by age 25.The
+ year after Brady won his first championship, New England did not even 
+reach the playoffs, let alone return to the Super Bowl as Wilson did. 
+Wilson had won his first 10 games against Super Bowl-winning 
+quarterbacks, but Brady, even throwing two interceptions, dazzled, 
+completing 37 of 50 passes for 328 yards and firing touchdowns to four 
+receivers in winning his third Most Valuable Player award. He joined Joe
+ Montana, his boyhood idol, and Terry Bradshaw as the only quarterbacks 
+to win four championships, all of Brady’s coming with Belichick.“I’m
+ a big Joe Montana fan — I love him to death, I thought he was the best 
+and everything,” Edelman said, but, “Tom Brady came out here, he’s been 
+to six Super Bowls, he’s won four with the salary cap. It’s hard to 
+argue against that.”All
+ week the Seahawks treated queries about Brady’s brilliance and 
+LeGarrette Blount’s brawn and Gronkowski’s gronkness, about the 
+Patriots’ wacky receiver-ineligible formations and chameleonic offense —
+ 40 rushes one game, 14 the next — and flicked them away like cigarette 
+ash. Not out of arrogance, or disrespect, but the declaration, as stated
+ earlier in the week by linebacker Bobby Wagner that “we do what we do 
+and we do it very good.”
+                                    Video by Justin Sablich                     on
+                                                                        February 2, 2015.
+                                    Photo by Tom Pennington/Getty Images.
+Confusing
+ offenses is not the Seahawks’ style. They just line up in their 
+three-deep coverage, with their thumping secondary, and try to impose 
+their will. Usually successful, the Seahawks were not in the first half.
+ Countering Seattle’s pass-rush, the Patriots ran quick passes, screens 
+and pick plays, and they ran them so well that on their second 
+possession Brady guided New England to the Seattle 10, on a drive that 
+consumed nearly eight minutes.
+Chased
+ by Michael Bennett from the left side, Brady made a miserable red-zone 
+decision — throwing nowhere near a receiver, and right into the hands of
+ Jeremy Lane at the goal line. The interception prevented one touchdown,
+ but it indirectly produced another.
+On
+ his return, Lane, the Seahawks’ nickel cornerback, sustained an arm 
+injury. Tharold Simon replaced him, and on the Patriots’ next possession
+ Brady exposed him. First with a 24-yard pass to Edelman, zipping across
+ the middle, and then, two plays later, with a perfect slant to Brandon 
+LaFell, whose 11-yard touchdown put New England ahead, 7-0.For
+ the Seahawks, their offensive malaise — three series, one first down — 
+evoked the first 58 minutes of their last game, the N.F.C. championship 
+victory against the Packers. Nothing Seattle tried, from Lynch’s 
+interior running to dropbacks by Wilson that were thwarted by the 
+Patriots’ superb downfield coverage, seemed to work.Until
+ Wilson found a matchup he liked and exploited it, connecting deep down 
+the right sideline with Chris Matthews, whose onside kick recovery two 
+weeks ago proved he had excellent hands. Matthews reached over Kyle 
+Arrington and fell backward while hauling in his first career catch, a 
+44-yarder that set up Lynch’s 3-yard touchdown run with 2:16 left in the
+ first half.
+That
+ was far too much time on the clock for Brady, who dissected the 
+Seahawks as if slowly pulling off a Band-Aid — with short passes to 
+Shane Vereen — before yanking it off with a 22-yard touchdown fade to 
+Gronkowski with 31 seconds remaining.
+Some post-nausea-SuperBowl-overdose. Read the 
+"NFL document titled 'Super Bowl LII-Host City Bid Specifications &amp; 
+Requirements.' This...
+A fantastic football game ...until the end.The 
+end being when I turned my TV off after the fighting began when NE had 
+the football near its...
+The seahawks continued the unbelievable play 
+loss that Green Bay fell victim to in losing to the Seahawks. What goes 
+around does, sometimes,...
+See All Comments
+But
+ that was also far too much time for Wilson, who has developed a 
+reputation for clutch passing himself. He drove the Seahawks 80 yards in
+ 29 seconds, a series keyed by a 23-yard pass to Ricardo Lockette and 
+10-yard personal foul on Arrington. With the ball at the New England 11 
+and six seconds left before halftime, Carroll had a choice: attempt a 
+field goal or run one final play.Nothing
+ about the Seahawks’ aggressive personality suggested they would play it
+ safe, and Wilson whipped a pass on the outside to the 6-foot-5 
+Matthews, who exploited his 6-inch height advantage over Logan Ryan, for
+ an 11-yard touchdown that evened the score at 14-14 heading into 
+halftime.
+            Mark J. Rebilas/USA Today Sports, via Reuters        
+The
+ Seahawks, masters of the second half and the fourth quarter, were in 
+the middle of reeling off 17 straight points. They were in control until
+ they were not — a feeling New England knew all too well, and returned 
+when Seattle took over with 2:02 to play at its own 20.Three
+ plays after Wilson opened the drive by throwing a 31-yard pass to Lynch
+ down the left sideline, Jermaine Kearse made a catch to rival Tyree’s 
+on this same field in 2008 — defended by Butler, Kearse had the ball 
+bounce off both thighs and his lower arm before he corralled it at the 
+New England 5.“I
+ didn’t have any doubt,” receiver Doug Baldwin said. “At that time, you 
+didn’t think there was anyone on the sideline who didn’t think we’d 
+score.”After
+ a 4-yard run by Lynch, the Seahawks lined up in a three-receiver set. 
+Based on the formation, Butler said he recognized before the snap that 
+Seattle was running a play intended to beat man-to-man coverage. It 
+forced the cornerbacks to line up tight, Butler said.
+As
+ Carroll explained it, he did not want to waste a running play against 
+New England’s goal-line defense — he wanted to save that for third and 
+fourth downs, if necessary.Split
+ out wide were Kearse and Lockette, who stood a few yards behind him and
+ a step to his right. Even though Wilson’s head was not moving, Butler 
+read his eyes, which were scanning in that direction.“When
+ they made the call, I didn’t question it,” said Wilson, who finished 12
+ of 21 for 247 yards. He added: “We thought we had them. I thought it 
+was going to be a touchdown when I threw it. When I let it go, I thought
+ it was going to be game over.”
+“It’s
+ going to kill me,” Seattle linebacker Bruce Irvin said. “I think I’m 
+about to just go lock myself in my room for about two weeks. This one 
+hurt because we had it. We had it.”The
+ Seahawks will recover. They are too young, too resilient and too 
+talented. But they also lost in perhaps the cruelest way possible, to a 
+team that once specialized in crushing defeats but no more.
+Look,
+ everyone in the entire world knew that Lynch was going to get the ball.
+ Everyone. And the Pats had stopped him several times.So, why not do
+ what no one in the entire world expects -- a quick pass just over the 
+goal line? If it worked, Pete Carroll would be a football genius. If it 
+went incomplete, now you have the Pats wondering if you'll do it again 
+or go with Lynch, and slow the defenders a half-step, which is all Lynch
+ would need.
+Three things can happen when you throw the 
+football and two of them are bad.  An absolutely ridiculous play call in
+ that situation, and the result was, statistically speaking, 
+predictable.Too bad for Seattle, and New England gets the win.  And 
+the chorus of "what if's" will be loud and resounding.  In Seattle, 
+anyway.
+My big question is where Wilson goes from here. 
+ He was mediocre tonight.   This will be a true test of his character.  
+He'll probably land on his feet.  But mark my words, the critics won't 
+give him as much time as he deserves if he falters.  Brady's  two Super 
+Bowl losses weighed on him for years.  Now, they'll proclaim him the 
+best ever.  The critics are fickle.  They expect the impossible.  Wilson
+ could be on the hot seat before long.  Everyone loves a winner.  Not so
+ much second place.  
+The thing is, if Seattle gives the ball to 
+Lynch, the Patriots probably would have had to LET him score, so as to 
+be able to get the ball back and give Brady 50 seconds or so to go 
+length of the field...Shows how difficult it really is to win a 
+championship (in any sport), so many things can happen, momentum can 
+shift so quickly, etc....The drama of sports, it beats the drama of most
+ movies and TV shows...
+I'm a Pats fan.  Their time of possession 
+dominance in the first half spoke loud to me.  So did the fact that 
+Seattle scored 2 TD's off of turnovers.  When the Pats fell behind by 
+10, I expected them to lose.  But they hadn't been outplayed at that 
+point.  So 10 down was bad, but not over.  In the end, I thought it was a
+ toss-up.  The freak catch sealed a Pats loss.  The interception sealed a
+ victory.  I'd give the first half to the Pats and the second half to 
+the Hawks.  And I'd attribute the Pats victory to that one play, which 
+could have gone either way.
+This is a perfect example of a classic mistake 
+that spectators make: judging a coach by an outcome, which is out of a 
+coach's control, rather than by a decision, which is in a coach's 
+control.After
+ Kearse's miracle catch, Seattle had 1:06 remaining with two timeouts. 
+Lynch's run to the 1-yard line forced them to burn a second timeout, 
+leaving Seattle with only one timeout remaining and less than a minute 
+to play.So suppose you've got three downs, one timeout, less 
+than a minute, and one yard to deal with for the championship. The 
+question that goes through your mind should be, "What happens if we run 
+on second down and get stuffed?" There are two answers: (1) you burn 
+about 15 seconds to hurry-up to your next play, which, if unsuccessful, 
+leads to you using your last timeout before your last shot at the 
+championship. (2) You burn your timeout after the run on second down and
+ then are forced to hurry-up to fourth down if the third down play 
+doesn't convert. Either way, you don't have an opportunity to plan for 
+one of those downs.Carroll claims that the matchup of Lynch 
+against the New England goal line defense would probably have led to 
+their RB getting stuffed, which means Seattle has to deal with all of 
+the above. If that's true, then he made the correct DECISION, which was 
+to pass. If it converts, great. If it doesn't, then the clock is 
+stopped, and you have time to plan the last two downs.
+In Carroll's defense, I've seen the Seahawks 
+complete those short slant passes near the goal line all season.   I'm 
+sure he regrets it now - but had it worked (and it was close) he'd have 
+been sung a genius by some for having surprised the Patriot defenders.
+I love all these back and forth comments. I 
+started out watching the game, not caring about which side won, only 
+hoping for a good game. I got my wish and then some. I also ended up 
+rooting for Brady. He's a class act and I wanted him up there with 
+Montana and Bradshaw. 
+A native Bostonian joyfully celebrates the 
+Patriots'  fourth Super Bowl title and vindication of Coach Bill 
+Belichick and quarterback Tom Brady. Multiple subtexts abound. XLIX was 
+perhaps the finest of all. The NFL endured a horrendous year from a 
+public relations standpoint. The Patriots are a team that countless 
+millions of fans despise. In the glow of my joy, two things stand out: 
+1. Richard Sherman's great show of sportsmanship to nemesis to Tom Brady
+ at the end, and 2. Pete Carroll's play call just moments before. I hope
+ Seahawks fans will appreciate Coach Carroll 's tremendous contribution 
+to that franchise. His gamble failed; that does not make him an evil 
+man. There was a flaw in the plan that he could not foresee. He should 
+not be crucified. I truly hope that Seattle will clutch him to its 
+breast with, as William Shakespeare wrote, "hoops of steel."
+News Analysis:
+Surviving the Nazis, Only to Be Jailed by America 
+ArtsBeat:
+At Grammys Event, Bob Dylan Speech Steals the Show
+Stream of Foreign Wealth Flows to Elite New York Real Estate
+After Harper Lee Novel Surfaces, Plots Arise
+Maureen Dowd:
+Anchors Aweigh
+Women at Work:
+Madam C.E.O., Get Me a Coffee
+Opinion:
+Good Lovers Lie 
+News Analysis:
+Insured, but Not Covered
+Towers of Secrecy:
+Well Connected at Home, Young Malaysian Has an...
+Morocco, From Coast to Desert
+Buffalo agreed in principle to sign Incognito, an 
+offensive guard who has been out of football since emerging as a central
+ figure in a...
+                    © 
+require(['foundation/main'], function () {
+    require(['article/main']);
+    require(['jquery/nyt', 'foundation/views/page-manager'], function ($, pageManager) {
+        $(document).ready(function () {
+            require(['http://static01.nyt.com/bi/js/tagx/tagx.js'], function () {
+                pageManager.trackingFireEventQueue();
+            });
+        });
+    });
+});
+                                Africa                                                            
+                                Americas                                                            
+                                Asia Pacific                                                            
+                                Europe                                                            
+                                Middle East                                                            
+                                At War                                                            
+                                India Ink                                                            
+                                Sinosphere                                                            
+                                Education                                                            
+                                First Draft                                                            
+                                Elections                                                            
+                                City Room                                                            
+                                ArtsBeat                                                            
+                                Events                                                            
+                                DealBook                                                            
+                                Economy                                                            
+                                Energy                                                            
+                                Markets                                                            
+                                Media                                                            
+                                Small Business                                                            
+                                Your Money                                                            
+                                DealBook                                                            
+                                Economy                                                            
+                                Energy                                                            
+                                Markets                                                            
+                                Media                                                            
+                                Small Business                                                            
+                                Your Money                                                            
+                                Op-Ed Columnists                                                                    
+                                Editorials                                                            
+                                Contributing Writers                                                            
+                                Op-Ed Contributors                                                            
+                                Opinionator                                                            
+                                Letters                                                            
+                                Sunday Review                                                            
+                                Taking Note                                                            
+                                Room for Debate                                                            
+                                Public Editor                                                            
+                                Cartoons                                                            
+                                Op-Ed Columnists                                                                    
+                                Editorials                                                            
+                                Contributing Writers                                                            
+                                Op-Ed Contributors                                                            
+                                Opinionator                                                            
+                                Letters                                                            
+                                Sunday Review                                                            
+                                Taking Note                                                            
+                                Room for Debate                                                            
+                                Public Editor                                                            
+                                Cartoons                                                            
+                                Bits                                                            
+                                Personal Tech                                                            
+                                Environment                                                            
+                                Space &amp; Cosmos                                                            
+                                Well                                                            
+                                Money &amp; Policy                                                            
+                                Health Guide                                                            
+                                Baseball                                                            
+                                Basketball: College                                                            
+                                Basketball: N.B.A.                                                            
+                                Football: College                                                            
+                                Football: N.F.L.                                                            
+                                Golf                                                            
+                                Hockey                                                            
+                                Soccer                                                            
+                                Tennis                                                            
+                                Baseball                                                            
+                                Basketball: College                                                            
+                                Basketball: N.B.A.                                                            
+                                Football: College                                                            
+                                Football: N.F.L.                                                            
+                                Golf                                                            
+                                Hockey                                                            
+                                Soccer                                                            
+                                Tennis                                                            
+                                Art &amp; Design                                                            
+                                ArtsBeat                                                            
+                                Books                                                            
+                                Dance                                                            
+                                Movies                                                            
+                                Music                                                            
+                                N.Y.C. Events Guide                                                            
+                                Television                                                            
+                                Theater                                                            
+                                Video Games                                                            
+                                Art &amp; Design                                                            
+                                ArtsBeat                                                            
+                                Books                                                            
+                                Dance                                                            
+                                Movies                                                            
+                                Music                                                            
+                                N.Y.C. Events Guide                                                            
+                                Television                                                            
+                                Theater                                                            
+                                Video Games                                                            
+                                T Magazine                                                            
+                                Motherlode                                                            
+                                On the Runway                                                            
+                                Weddings                                                            
+                                T Magazine                                                            
+                                Motherlode                                                            
+                                On the Runway                                                            
+                                Weddings                                                            
+                                Cooking                                                            
+                                Restaurant Search                                                            
+                                Cooking                                                            
+                                Restaurant Search                                                            
+                                Commercial Real Estate                                                            
+                                Great Homes &amp; Destinations                                                            
+                                My Real Estate                                                            
+                                U.S. &amp; Politics                                                            
+                                International                                                            
+                                New York                                                            
+                                Opinion                                                            
+                                Times Documentaries                                                            
+                                Business                                                            
+                                Technology                                                            
+                                Culture                                                            
+                                Style                                                            
+                                Health                                                            
+                                Food                                                            
+                                Travel                                                            
+                                Sports                                                            
+                                Real Estate                                                            
+                                Science                                                            
+                                Crossword                                                            
+                                Times Premier                                                            
+                                Today's Paper                                                            
+                                Automobiles                                                            
+                                Corrections                                                            
+                                Multimedia                                                            
+                                Photography                                                            
+                                Classifieds                                                            
+                                Tools &amp; Services                                                            
+                                Jobs                                                            
+                                Times Topics                                                            
+                                Blogs                                                            
+                                NYT Store                                                            
+                                Times Journeys                                                            
+                                Subscribe                                                            
+                                Manage Account                                                            
+                            Charles M. Blow                                                    
+                            David Brooks                                                    
+                            Frank Bruni                                                    
+                            Roger Cohen                                                    
+                            Gail Collins                                                    
+                            Ross Douthat                                                    
+                            Maureen Dowd                                                    
+                            Thomas L. Friedman                                                    
+                            Nicholas Kristof                                                    
+                            Paul Krugman                                                    
+                            Joe Nocera                                                    
+                            Charles M. Blow                                                    
+                            David Brooks                                                    
+                            Frank Bruni                                                    
+                            Roger Cohen                                                    
+                            Gail Collins                                                    
+                            Ross Douthat                                                    
+                            Maureen Dowd                                                    
+                            Thomas L. Friedman                                                    
+                            Nicholas Kristof                                                    
+                            Paul Krugman                                                    
+                            Joe Nocera                                                    
+campaign: 
+abTest_growl_at_2_remove_msg_0115 -- 267189, creative: 
+abtest_growl_remove_msg_0115 -- 393858, page: 
+www.nytimes.com/growl_nyt_now, targetedPage: 
+www.nytimes.com/growl_nyt_now, position: Left9
+By signing up, you agree to receive updates and special offers for The 
+New York Times’s products and services. You may unsubscribe at any time.
+Verified Commenters
+can leave comments on NYTimes.com without initial moderation. Verified status is earned based on a history of quality comments.
